@@ -69,13 +69,14 @@ public class Driver {
                     driverPool.set(new SafariDriver());
                     break;
                 case "remote_chrome":
-                    ChromeOptions chromeOptions = new ChromeOptions();
-                    chromeOptions.setCapability("platform", Platform.ANY);
+                 ChromeOptions options = new ChromeOptions();
+                 options.setCapability("platform",Platform.ANY);
                     try {
-                        driverPool.set(new RemoteWebDriver(new URL("http://35.170.246.36:4444/wd/hub"),chromeOptions));
+                        driverPool.set(new RemoteWebDriver(new URL("http://35.170.246.36:4444/wd/hub"),options));
                     } catch (MalformedURLException e) {
                         e.printStackTrace();
                     }
+
             }
         }
         return driverPool.get();
